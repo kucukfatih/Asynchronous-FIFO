@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module FIFO_asn#(parameter width = 4, parameter depth = 8, parameter adr_width = $clog2(depth))(
+module FIFO_asn#(parameter width = 16, parameter depth = 8, parameter adr_width = $clog2(depth))(
 
     input wire clk_w,
     input wire clk_r,
@@ -58,7 +58,6 @@ module FIFO_asn#(parameter width = 4, parameter depth = 8, parameter adr_width =
     .load(write_int),
     .read(read_int),
     .clk_w(clk_w),
-    .clk_r(clk_r),
     .data_out(data_out));
     
     synch #(1) wr_rst_syn (.syn_clk(clk_w),

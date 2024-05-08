@@ -29,8 +29,7 @@ module memory#(parameter width = 32, parameter depth = 8,parameter adr_width = $
     input wire load,
     input wire read,
     input wire clk_w,
-    input wire clk_r,
-    output reg [width-1:0]data_out
+    output wire [width-1:0]data_out
 
     );
     
@@ -42,12 +41,7 @@ module memory#(parameter width = 32, parameter depth = 8,parameter adr_width = $
         else
             mem[w_adr] <= mem[w_adr];
     end
-     always @(posedge clk_r) begin
-     
-        if(read)
-            data_out <= mem[r_adr];
-        else
-            data_out <= data_out;
-    end
+
+    assign data_out = mem[r_adr];
     
 endmodule
