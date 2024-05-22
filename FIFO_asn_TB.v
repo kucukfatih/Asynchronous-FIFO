@@ -75,13 +75,13 @@ module FIFO_asn_TB;
     
     
     initial begin 
-    rst = 0;
-    #5
     rst = 1;
+    #30
+    rst = 0;
     we = 0;
     re = 1;
     #5;
-    rst = 0;
+    rst = 1;
     data_in = 16'd1;#10
     data_in = 16'd2;#10
     data_in = 16'd3;#10
@@ -89,7 +89,7 @@ module FIFO_asn_TB;
     data_in = 16'd5;#10
     data_in = 16'd6;#10
     data_in = 16'd7;#10
-    data_in = 16'd8;#10
+    data_in = 16'd8;#12
     we=1;
     re=0;
     data_in = 16'd1;#10

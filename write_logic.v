@@ -39,9 +39,9 @@ module write_logic#(parameter width = 32, parameter depth = 8, parameter adr_wid
     
     assign write = en;
     
-    always @(posedge clk_w, posedge reset) begin
+    always @(posedge clk_w, negedge reset) begin
     
-        if(reset) 
+        if(!reset) 
             address <= 0;
         else if (en)
             address <= address + 1;

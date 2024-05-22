@@ -60,13 +60,15 @@ module FIFO_asn#(parameter width = 16, parameter depth = 8, parameter adr_width 
     .clk_w(clk_w),
     .data_out(data_out));
     
-    synch #(1) wr_rst_syn (.syn_clk(clk_w),
-     .in(reset),
-     .syn_out(wr_syn_rst));
+    rst_synch wr_rst_syn (.clk_sync(clk_w),
+     .async_rst(reset),
+     .sync_rst(wr_syn_rst));
      
-     synch #(1) rd_rst_syn (.syn_clk(clk_r),
-     .in(reset),
-     .syn_out(rd_syn_rst));
+     
+     
+     rst_synch rd_rst_syn (.clk_sync(clk_r),
+     .async_rst(reset),
+     .sync_rst(rd_syn_rst));
      
     write_logic #(width,depth,adr_width) write (.clk_w(clk_w),
      .reset(wr_syn_rst),

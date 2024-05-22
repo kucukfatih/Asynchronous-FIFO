@@ -39,9 +39,9 @@ module read_logic#(parameter width = 32, parameter depth = 8, parameter adr_widt
     
     assign read = en;
     
-    always @(posedge clk_r, posedge reset) begin
+    always @(posedge clk_r, negedge reset) begin
     
-        if(reset) 
+        if(!reset) 
             address <= 0;
         else if (en)
             address <= address + 1;
